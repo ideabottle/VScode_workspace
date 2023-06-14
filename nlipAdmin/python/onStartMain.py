@@ -2,24 +2,20 @@ import sys
 
 import win32con
 import win32gui
+from PyQt5 import QtWidgets
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow, QPushButton,
+                             QStackedWidget, QVBoxLayout, QWidget)
 from PyQt5.uic import loadUi
+
+from main import mainTabController
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-
-        # QT Designer ui 호출
-        loadUi('nlipAdmin/nlipAdmin.ui', self)
-
-        # Connect signals and slots
-        #self.pushButton.clicked.connect(self.on_button_clicked)
-
-    def on_button_clicked(self):
-        # Slot function for button click
-        self.label.setText('Button clicked!')
-
+        # MainWindow 좌측 탭 설정
+        mainTabController.mainTabSet(self)
 
 
 def main():
